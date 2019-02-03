@@ -1,0 +1,126 @@
+<template>
+	<view class="abnor">
+		<view class="abnor__box">
+			<image class="abnor__image" wx:if="{{image}}" src="{{image}}"
+			       mode="widthFix"></image>
+			<view class="abnor__text" wx:if="{{title}}">{{title}}</view>
+			<view class="abnor__tip" wx:if="{{tip}}">{{tip}}</view>
+			<view class="abnor__btn" wx:if="{{showButton && button}}"
+			      bindtap="emitAbnorTap">{{button}}</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	let abnorConfig = {
+		'DEFAULT': {
+			image: 'default',
+			button: '点击重试'
+		}
+	};
+	if ($.WuiConfig && $.WuiConfig.Abnor)
+		$(abnorConfig).extend($.WuiConfig.Abnor);
+	
+	export default {
+		config: {
+			usingComponents: {}
+		},
+		behaviors: [],
+		properties: {
+			error: {
+				type: null,
+				value: null,
+				observer(e) {
+					e = e || {};
+					if (e.constructor === String) {
+						if ($.Err[e])
+							e = $.Err[e]();
+						else
+							e = new $.Err(e, e);
+					}
+					this.data.error = e;
+					const configForThisError = $.extend(abnorConfig['DEFAULT'], abnorConfig[e.type]);
+					this.setData({
+						image: !configForThisError.image ? null : `/images/error_${configForThisError.image}.png`,
+						title: e.brief || '抱歉，出错啦！',
+						button: configForThisError.button,
+						tip: e.message || null
+					});
+				}
+			},
+			showButton: {
+				type: Boolean,
+				value: false
+			}
+		},
+		data: {
+			image: `/images/error_${abnorConfig['DEFAULT'].image}.png`,
+			title: abnorConfig['DEFAULT'].title,
+			tip: abnorConfig['DEFAULT'].tip,
+			button: abnorConfig['DEFAULT'].button
+		},
+		methods: {
+			emitAbnorTap(event) {
+				let detail = event.detail;
+				let option = {};
+				this.triggerEvent('abnortap', detail, option);
+			}
+		}
+	}
+
+</script>
+
+<style lang="pcss">
+	@b abnor {
+		position: relative;
+		display: block;
+		width: 100%;
+		height: 100%;
+		min-height: 200px;
+		overflow: hidden;
+		
+		@e box {
+			position: absolute;
+			display: flex;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		@e btn {
+			min-width: 228rpx;
+			height: 66rpx;
+			margin-top: 30rpx;
+			padding: 0 30rpx;
+			background-color: #ff5777;
+			border: 0 none;
+			border-radius: 2px;
+			color: #fff;
+			font-size: 28rpx;
+			text-align: center;
+			overflow: hidden;
+			line-height: 66rpx;
+		}
+		@e btn:active {
+			background-color: #f5456e;
+		}
+		@e image {
+			width: 514rpx;
+			background: transparent no-repeat;
+			background-size: cover;
+			margin-bottom: 30rpx;
+		}
+		@e text {
+			color: #333;
+			font-size: 28rpx;
+		}
+		@e tip {
+			margin-top: 20rpx;
+			color: #666;
+			font-size: 24rpx;
+		}
+	}
+</style>

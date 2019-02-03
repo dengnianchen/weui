@@ -1,0 +1,18 @@
+<template>
+  <wui-list></wui-list>
+</template>
+
+<script>
+export default {
+  config: {
+    usingComponents: {
+      'wui-list': '@yapple/wui-list'
+    }
+  },
+  data: { },
+  methods: { }
+}
+</script>
+
+<style>
+</style>

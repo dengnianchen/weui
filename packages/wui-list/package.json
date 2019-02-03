@@ -6,7 +6,7 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/meili/minui/tree/master/packages/wui-list"
+    "url": "https://github.com/dengnianchen/weui/tree/master/packages/wui-list"
   },
   "author": "",
   "license": "MIT",
@@ -15,5 +15,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@yapple/wui-icon": "^1.0.1"
   }
 }

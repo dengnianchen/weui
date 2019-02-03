@@ -1,0 +1,18 @@
+<template>
+  <wui-icon></wui-icon>
+</template>
+
+<script>
+export default {
+  config: {
+    usingComponents: {
+      'wui-icon': '@yapple/wui-icon'
+    }
+  },
+  data: { },
+  methods: { }
+}
+</script>
+
+<style>
+</style>

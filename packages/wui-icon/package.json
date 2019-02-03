@@ -1,0 +1,19 @@
+{
+  "name": "@yapple/wui-icon",
+  "version": "1.0.0",
+  "description": "图标 - 小程序组件",
+  "main": "dist/index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meili/minui/tree/master/packages/wui-icon"
+  },
+  "author": "",
+  "license": "MIT",
+  "minConfig": {
+    "component": true
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

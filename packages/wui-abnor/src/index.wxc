@@ -12,14 +12,12 @@
 </template>
 
 <script>
-	let abnorConfig = {
+	let abnorConfig = $.extend({
 		'DEFAULT': {
 			image: 'default',
 			button: '点击重试'
 		}
-	};
-	if ($.WuiConfig && $.WuiConfig.Abnor)
-		$(abnorConfig).extend($.WuiConfig.Abnor);
+	}, $.Wui.config.abnor);
 	
 	export default {
 		config: {

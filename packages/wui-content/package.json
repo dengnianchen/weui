@@ -1,0 +1,19 @@
+{
+  "name": "@yapple/wui-content",
+  "version": "1.0.0",
+  "description": "内容容器 - 小程序组件",
+  "main": "dist/index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dengnianchen/weui/tree/master/packages/wui-content"
+  },
+  "author": "",
+  "license": "MIT",
+  "minConfig": {
+    "component": true
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

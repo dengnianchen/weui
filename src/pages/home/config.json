@@ -7,6 +7,18 @@
       "icon": "https://s10.mogucdn.com/mlcdn/c45406/171122_7al50lach13ji6jggj63d17h522dh_200x200.png",
       "pages": [
         {
+          "id": "content",
+          "name": "内容容器",
+          "icon": "",
+          "code": ""
+        },
+        {
+          "id": "cc",
+          "name": "居中提示",
+          "icon": "",
+          "code": ""
+        },
+        {
           "id": "abnor",
           "name": "异常信息面板",
           "icon": "",

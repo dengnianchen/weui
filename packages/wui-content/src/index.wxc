@@ -1,0 +1,80 @@
+<template xmlns:wx="http://www.w3.org/1999/xhtml">
+	<view>
+		<wui-cc wx:if="{{loading}}" src="../../images/loading.gif"
+		        text="加载中" size="120" color="#999999"></wui-cc>
+		<wui-abnor wx:elseif="{{error}}" error="{{error}}"></wui-abnor>
+		<slot wx:else></slot>
+	</view>
+</template>
+
+<script>
+	if (!$.Wui.Content) {
+		$.Wui.Content = {
+			get(id) {
+				let instance = this.instances[id];
+				if (!instance)
+					return null;
+				return {
+					bindLoad(func) {
+						instance.loadCallback = func;
+					},
+					load() {
+						instance.load();
+					}
+				};
+			},
+			instances: {}
+		};
+	}
+	
+	export default {
+		config: {
+			usingComponents: {
+				'wui-abnor': '@yapple/wui-abnor',
+				'wui-cc': '@yapple/wui-cc',
+			},
+		},
+		behaviors: [],
+		properties: {},
+		data: {
+			loading: false,
+			error: null,
+		},
+		lifetimes: {
+			attached() {
+				$.Wui.Content.instances[this.id] = this;
+			},
+			detach() {
+				delete $.Wui.Content.instances[this.id];
+			}
+		},
+		methods: {
+			async load() {
+				this.setData({ loading: true });
+				try {
+					await this.loadCallback (this);
+					this.setData({
+						loading: false,
+						error: null
+					});
+				} catch (ex) {
+					this.setData({
+						loading: false,
+						error: ex,
+					});
+				}
+				//this.triggerEvent('load', { wui: this });
+			},
+			loaded(error = null) {
+				this.setData({
+					loading: false,
+					error: error,
+				});
+			},
+		},
+	};
+</script>
+
+<style>
+
+</style>

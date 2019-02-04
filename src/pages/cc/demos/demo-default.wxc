@@ -1,0 +1,18 @@
+<template>
+  <wui-cc></wui-cc>
+</template>
+
+<script>
+export default {
+  config: {
+    usingComponents: {
+      'wui-cc': '@yapple/wui-cc'
+    }
+  },
+  data: { },
+  methods: { }
+}
+</script>
+
+<style>
+</style>

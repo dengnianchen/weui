@@ -1,0 +1,44 @@
+<template>
+	<image src="{{imageSrc}}"
+	       style="width:{{size}}rpx;height:{{size}}rpx"
+	       mode="aspectFit"
+	></image>
+</template>
+
+<script>
+	
+	let imageMap = {
+		loading: "loading.gif"
+	};
+	
+	export default {
+		config: {
+			usingComponents: {},
+		},
+		behaviors: [],
+		properties: {
+			image: {
+				type: String,
+				value: "",
+				observer(val) {
+					this.setData({ imageSrc: imageMap[val] });
+				}
+			},
+			size: {
+				type: Number,
+				value: 100
+			}
+		},
+		data: {
+			imageSrc: null
+		},
+		methods: {},
+	};
+
+
+</script>
+
+<style>
+	.wui-preset-image {
+	}
+</style>

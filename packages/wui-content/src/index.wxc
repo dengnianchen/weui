@@ -1,6 +1,6 @@
 <template xmlns:wx="http://www.w3.org/1999/xhtml">
 	<view>
-		<wui-cc wx:if="{{loading}}" src="./loading.gif"
+		<wui-cc wx:if="{{loading}}" image="loading"
 		        text="加载中" size="120" color="#999999"></wui-cc>
 		<wui-abnor wx:elif="{{error}}" error="{{error}}"></wui-abnor>
 		<slot wx:else></slot>

@@ -1,0 +1,16 @@
+{
+  "name": "@yapple/wui-preset-image",
+  "version": "1.0.0",
+  "description": "预设图像 - 小程序组件",
+  "main": "dist/index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meili/minui/tree/master/packages/wui-preset-image"
+  },
+  "author": "",
+  "license": "MIT",
+  "minConfig": {
+    "component": true
+  }
+}

@@ -43,7 +43,7 @@
 			attached() {
 				$.Wui.content.instances[this.id] = this;
 			},
-			detach() {
+			detached() {
 				delete $.Wui.content.instances[this.id];
 			}
 		},

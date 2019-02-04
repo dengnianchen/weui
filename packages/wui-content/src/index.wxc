@@ -11,7 +11,7 @@
 	
 	if (!$.Wui.content) {
 		$.Wui.content = function(id) {
-			let instance = this.instances[id];
+			let instance = this.content.instances[id];
 			if (!instance)
 				return null;
 			return {

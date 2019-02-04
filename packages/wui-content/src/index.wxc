@@ -8,6 +8,7 @@
 </template>
 
 <script>
+	
 	if (!$.Wui.content) {
 		$.Wui.content = function(id) {
 			let instance = this.instances[id];

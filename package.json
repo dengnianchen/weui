@@ -12,7 +12,8 @@
     "@minui/wxc-example": "^1.0.0",
     "@minui/wxc-example-demo": "^1.0.0",
     "@minui/wxc-example-md": "^1.0.0",
-    "@minui/wxc-example-menu": "^1.0.0"
+    "@minui/wxc-example-menu": "^1.0.0",
+    "welib": "git+https://github.com/dengnianchen/welib.git"
   },
   "devDependencies": {
     "babel-plugin-syntax-export-extensions": "^6.13.0",

@@ -1,0 +1,120 @@
+<template>
+	<view class="wui-panel {{_style.bottomMargin?'wui-panel--bottom-margin':''}}" style="background:{{_style.background}};border-color:{{_style.borderColor}}">
+		<view wx:if="{{title}}" class="wui-panel__title" style="color:{{_style.titleColor}}">
+			<text class="wui-panel__title__text">{{title}}</text>
+			<button wx:if="{{contentId&&enableRefresh}}" class="wui-panel__title__refresh" bindtap="onRefreshButtonClicked">刷新</button>
+		</view>
+		<view wx:if="{{title}}" class="wui-panel__title--after" style="border-color:{{_style.borderColor}}"></view>
+		<wui-content wx:if="{{contentId}}" id="{{contentId}}">
+			<view class="wui-panel__content {{_style.leftPadding?'wui-panel__content--left-padding':''}} {{_style.rightPadding?'wui-panel__content--right-padding':''}}" style="color:{{_style.contentColor}}">
+				<slot></slot>
+			</view>
+		</wui-content>
+		<view wx:else class="wui-panel__content {{_style.leftPadding?'wui-panel__content--left-padding':''}} {{_style.rightPadding?'wui-panel__content--right-padding':''}}" style="color:{{_style.contentColor}}">
+			<slot></slot>
+		</view>
+	</view>
+</template>
+
+<script>
+	const defaultStyle = {
+		background: '#FFF',
+		borderColor: '#D3D3D3',
+		titleColor: '#999',
+		contentColor: '#333',
+		leftPadding: true,
+		rightPadding: false,
+		bottomMargin: true
+	};
+	
+	export default {
+		config: {
+			usingComponents: {
+				'wui-content': '@yapple/wui-content'
+			},
+		},
+		behaviors: [],
+		properties: {
+			title: {
+				type: String,
+				value: null
+			},
+			contentId: {
+				type: String,
+				value: ''
+			},
+			enableRefresh: {
+				type: Boolean,
+				value: false
+			},
+			wuiStyle: {
+				type: String,
+				value: "",
+				observer(val) {
+					try {
+						val = val.replace(/([A-Za-z0-9\-]+):/g, function ($0, $1) {
+							return "\"" + $.String.lowerDashToCamel($1) + "\":";
+						});
+						let wuiStyleObject = JSON.parse("{" + val + "}");
+						this.setData({
+							_style: $.extend(defaultStyle, wuiStyleObject)
+						});
+					} catch (ex) {
+						console.log(ex);
+					}
+				}
+			}
+		},
+		data: {
+			_style: defaultStyle
+		},
+		methods: {
+			onRefreshButtonClicked() {
+				if (this.data.contentId)
+					$.Wui.content(this.data.contentId).load();
+			}
+		},
+	};
+
+
+</script>
+
+<style lang="less">
+	.wui-panel {
+		border-top: solid 1px;
+		border-bottom: solid 1px;
+	}
+	.wui-panel--bottom-margin {
+		margin-bottom: 30px;
+	}
+	.wui-panel__title {
+		display: flex;
+		align-items: center;
+		position: relative;
+		font-size: 28px;
+	}
+	.wui-panel__title__text {
+		flex-grow: 1;
+		padding: 0.8em 30px;
+	}
+	.wui-panel__title__refresh {
+		font-size: 28px;
+	}
+	.wui-panel__title--after {
+		content: " ";
+		margin: 0 0 0 30px;
+		height: 1px;
+		border-bottom: solid 1px;
+	}
+	.wui-panel__content {
+		padding-left: 30px;
+		padding-bottom: 10px;
+		font-size: 32px;
+	}
+	.wui-panel__content--left-padding {
+		padding-left: 30px;
+	}
+	.wui-panel__content--right-padding {
+		padding-right: 30px;
+	}
+</style>

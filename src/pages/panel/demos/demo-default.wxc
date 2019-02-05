@@ -1,0 +1,18 @@
+<template>
+  <wui-panel></wui-panel>
+</template>
+
+<script>
+export default {
+  config: {
+    usingComponents: {
+      'wui-panel': '@yapple/wui-panel'
+    }
+  },
+  data: { },
+  methods: { }
+}
+</script>
+
+<style>
+</style>

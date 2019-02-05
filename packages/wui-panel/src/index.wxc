@@ -108,7 +108,6 @@
 	}
 	.wui-panel__content {
 		padding-left: 30px;
-		padding-bottom: 10px;
 		font-size: 32px;
 	}
 	.wui-panel__content--left-padding {

@@ -1,19 +1,19 @@
 {
-  "name": "@yapple/wui-abnor",
-  "version": "1.0.2",
-  "description": "异常信息面板 - 小程序组件",
-  "main": "dist/index.js",
-  "scripts": {},
-  "repository": {
-	"type": "git",
-	"url": "https://github.com/dengnianchen/weui/tree/master/packages/wui-abnor"
-  },
-  "author": "",
-  "license": "MIT",
-  "minConfig": {
-	"component": true
-  },
-  "publishConfig": {
-	"access": "public"
-  }
+ "name": "@yapple/wui-abnor",
+ "version": "1.0.3",
+ "description": "异常信息面板 - 小程序组件",
+ "main": "dist/index.js",
+ "scripts": {},
+ "repository": {
+  "type": "git",
+  "url": "https://github.com/dengnianchen/weui/tree/master/packages/wui-abnor"
+ },
+ "author": "",
+ "license": "MIT",
+ "minConfig": {
+  "component": true
+ },
+ "publishConfig": {
+  "access": "public"
+ }
 }

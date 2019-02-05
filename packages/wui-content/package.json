@@ -15,5 +15,9 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@yapple/wui-cc": "^1.0.1",
+    "@yapple/wui-abnor": "^1.0.1"
   }
 }

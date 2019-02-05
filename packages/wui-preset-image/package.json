@@ -12,5 +12,8 @@
   "license": "MIT",
   "minConfig": {
     "component": true
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

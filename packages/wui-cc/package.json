@@ -15,5 +15,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@yapple/wui-preset-image": "^1.0.1"
   }
 }

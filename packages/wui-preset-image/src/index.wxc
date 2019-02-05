@@ -1,8 +1,5 @@
 <template>
-	<image src="{{imageSrc}}"
-	       style="width:{{size}}rpx;height:{{size}}rpx"
-	       mode="aspectFit"
-	></image>
+	<image wx:if="{{image==='loading'}}" src="./loading.gif" style="width:{{size}}rpx;height:{{size}}rpx" mode="aspectFit"></image>
 </template>
 
 <script>
@@ -20,9 +17,6 @@
 			image: {
 				type: String,
 				value: "",
-				observer(val) {
-					this.setData({ imageSrc: imageMap[val] });
-				}
 			},
 			size: {
 				type: Number,
@@ -30,7 +24,6 @@
 			}
 		},
 		data: {
-			imageSrc: null
 		},
 		methods: {},
 	};

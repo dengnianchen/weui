@@ -1,0 +1,20 @@
+<template>
+  <wui-button text="Test Button"></wui-button>
+  <wui-button icon="fas fa-bookmark" text="Add to favourite"></wui-button>
+  <wui-button icon="fas fa-bookmark"></wui-button>
+</template>
+
+<script>
+export default {
+  config: {
+    usingComponents: {
+      'wui-button': '@yapple/wui-button'
+    }
+  },
+  data: { },
+  methods: { }
+}
+</script>
+
+<style>
+</style>

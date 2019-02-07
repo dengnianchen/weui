@@ -2,93 +2,35 @@
  * 将minui的实现中基于@minui/wxc-icon组件改成基于@yapple/wui-icon（基于fa图标库）
  */
 <template>
-	<form bindsubmit="onClick" report-submit="{{true}}">
-		<button class="fake-button list__body list__{{mode}}" form-type="submit" style="{{customStyle}}">
-			
-			<image wx:if="{{src}}" class="list__image" src="{{src}}" mode="aspectFill"></image>
-			
-			<wui-icon wx:if="{{!src && icon}}" name="{{icon}}" color="{{iconColor}}"
-			          class="list__icon"></wui-icon>
-			
-			<view class="list__title">
-				<view wx:if="{{title}}" class="list__title--main">{{title}}</view>
-				<view wx:if="{{detail}}" class="list__title--sub">{{detail}}</view>
-				<slot wx:if="{{!title&&!detail}}" name="content"></slot>
-			</view>
-			
-			<view wx:if="{{dot}}" style="background: {{dotColor}}" class="list__desc--dot"></view>
-			
-			<slot wx:if="{{!desc}}"></slot>
-			
-			<view wx:if="{{desc}}" class="list__desc--text">{{desc}}</view>
-			
-			<wxc-icon wx:if="{{arrow}}" class="list__desc--arrow" type="arrow-right" size="30" color="#c2c2c2"></wxc-icon>
-		</button>
-	</form>
+	<wui-list-item wx:for="{{items}}" wx:key="index"
+	          id="{{index}}" title="{{item.title}}"
+	          desc="{{item.desc}}" icon="{{item.icon}}"
+	          dot="{{item.dot}}"
+	          mode="{{index===items.length-1?'none':''}}"
+	          bind:click="onItemClicked"
+	></wui-list-item>
 </template>
 
 <script>
 	export default {
 		config: {
 			usingComponents: {
-				'wui-icon': '@yapple/wui-icon',
-				'wxc-icon': '@minui/wxc-icon'
+				'wui-list-item': '@yapple/wui-list-item',
 			}
 		},
 		options: {
-			multipleSlots: true // 在组件定义时的选项中启用多slot支持
 		},
 		behaviors: [],
 		properties: {
-			title: {
-				type: String,
-				value: '' // 标题
-			},
-			detail: {
-				type: String,
-				value: '' // 标题下方的具体描述
-			},
-			desc: {
-				type: String,
-				value: '' // 右侧描述部分
-			},
-			icon: {
-				type: String,
-				value: '' // 标题左侧icon pintuan
-			},
-			iconColor: {
-				type: String,
-				value: 'inherit' // 标题左侧icon颜色
-			},
-			src: {
-				type: String,
-				value: '' // 标题左侧icon图片链接
-			},
-			dot: {
-				type: Boolean,
-				value: false // 右侧描述部分的左侧红点
-			},
-			dotColor: {
-				type: String,
-				value: '#f5123e' // 右侧描述部分的左侧红点颜色
-			},
-			arrow: {
-				type: Boolean,
-				value: true  // 是否显示箭头
-			},
-			mode: {
-				type: String,
-				value: 'normal' // 有边框和无边框 normal, none
-			},
-			customStyle: {
-				type: String,
-				value: ''
+			items: {
+				type: Array,
+				value: []
 			}
 		},
 		data: {},
 		methods: {
-			onClick(event) {
-				this.triggerEvent('click', event.detail, {});
+			onItemClicked(e) {
+				this.triggerEvent('click', e.detail, {});
 			}
 		}
 	}
@@ -97,7 +39,6 @@
 </script>
 
 <style lang="pcss">
-	@import "common/style/fake-button.wxss";
 	
 	@b list {
 		@e body {

@@ -1,0 +1,96 @@
+<template>
+	<form bindsubmit="onClick" report-submit="{{true}}">
+		<button class="{{_style.plain?'wui-button--plain':''}}"
+		        form-type="submit">
+			<view wx:if="{{text||icon}}" class="wui-button__content">
+				<wui-icon wx:if="{{icon}}" name="{{icon}}"></wui-icon>
+				<text wx:if="{{text}}" decode="{{true}}">{{text}}</text>
+			</view>
+			<slot wx:else></slot>
+		</button>
+	</form>
+</template>
+
+<script>
+	const defaultStyle = {
+		plain: false
+	};
+	export default {
+		config: {
+			usingComponents: {
+				'wui-icon': '@yapple/wui-icon'
+			},
+		},
+		behaviors: [],
+		properties: {
+			text: {
+				type: String,
+				value: ''
+			},
+			icon: {
+				type: String,
+				value: ''
+			},
+			formWrap: {
+				type: Boolean,
+				value: false
+			},
+			wuiStyle: {
+				type: null,
+				value: {},
+				observer(val) {
+					try {
+						if (val instanceof String) {
+							val = val.replace(/([A-Za-z0-9\-]+):/g, function($0, $1) {
+								return "\"" + $.String.lowerDashToCamel($1) + "\":";
+							});
+							val = JSON.parse("{" + val + "}");
+						}
+						this.setData({
+							_style: $.extend(defaultStyle, val)
+						});
+					} catch (ex) {
+						console.log(ex);
+					}
+				}
+			}
+		},
+		data: {
+			_style: defaultStyle
+		},
+		methods: {
+			onClick(e) {
+				this.triggerEvent("tap", e.detail);
+			}
+		},
+	};
+</script>
+
+<style>
+	.wui-button {
+	}
+	
+	.wui-button--plain {
+		font-size: inherit;
+		text-align: inherit;
+		margin: 0;
+		padding: 0;
+		box-sizing: inherit;
+		line-height: inherit;
+		color: inherit;
+		background: inherit;
+		border: none;
+		border-radius: 0;
+	}
+	
+	.wui-button--plain::after {
+		border: none;
+		border-radius: 0;
+	}
+	
+	.wui-button__content {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+</style>

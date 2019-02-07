@@ -4,6 +4,8 @@
 </template>
 
 <script>
+  require ('welib');
+  
   export default {
     config: {
       pages: [],
@@ -19,7 +21,10 @@
       }
     },
     globalData: { },
-    onLaunch () { },
+    onLaunch () {
+      // 初始化Welib库
+      $.initial();
+    },
     onShow () { },
     onHide () { }
   }

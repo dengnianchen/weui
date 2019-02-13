@@ -1,6 +1,6 @@
 {
   "name": "@yapple/wui-content",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "内容容器 - 小程序组件",
   "main": "dist/index.js",
   "scripts": {},
@@ -18,6 +18,6 @@
   },
   "dependencies": {
     "@yapple/wui-abnor": "^1.0.1",
-    "@yapple/wui-cc": "^1.0.1"
+    "@yapple/wui-cc": "1.0.5"
   }
 }

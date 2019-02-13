@@ -1,6 +1,6 @@
 {
   "name": "@yapple/wui-cc",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "居中提示 - 小程序组件",
   "main": "dist/index.js",
   "scripts": {},
@@ -17,6 +17,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@yapple/wui-preset-image": "^1.0.1"
+    "@yapple/wui-preset-image": "1.0.4"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@yapple/wui-submit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "表单提交按钮 - 小程序组件",
   "main": "dist/index.js",
   "scripts": {},
@@ -17,7 +17,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@yapple/wui-form": "^1.0.1",
-    "@minui/wxc-button": "^1.0.2"
+    "@minui/wxc-button": "^1.0.2",
+    "@yapple/wui-form": "^1.0.1"
   }
 }

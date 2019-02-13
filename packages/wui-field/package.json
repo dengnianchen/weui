@@ -1,0 +1,22 @@
+{
+  "name": "@yapple/wui-field",
+  "version": "1.0.0",
+  "description": "表单控件 - 小程序组件",
+  "main": "dist/index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dengnianchen/weui/tree/master/packages/wui-field"
+  },
+  "author": "",
+  "license": "MIT",
+  "minConfig": {
+    "component": true
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@yapple/wui-form": "^1.0.1"
+  }
+}

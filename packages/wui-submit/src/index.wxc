@@ -1,0 +1,102 @@
+<template>
+	<wxc-button size="{{size}}"
+	            type="{{_formDisabled||disabled?'disabled':type}}"
+	            plain="{{plain}}"
+	            value="{{label}}"
+	            hoverClass="{{hoverClass}}"
+	            loading="{{loading}}"
+	            btnStyle="{{btnStyle}}"
+	            hoverStopPropagation="{{hoverStopPropagation}}"
+	            hoverStartTime="{{hoverStartTime}}"
+	            hoverStayTime="{{hoverStayTime}}"
+	            bindsubmit="_bindSubmit"
+	></wxc-button>
+</template>
+
+<script>
+	const formField = require('@yapple/wui-form/src/form-field');
+	let form = null;
+
+	export default {
+		config: {
+			usingComponents: {
+				'wxc-button': '@minui/wxc-button',
+			},
+		},
+		relations: {
+			'../../wui-form/src/index': {
+				type: 'ancestor',
+				linked(target) {
+					form = target;
+					this.setData({
+						_formDisabled: form.data.disabled
+					});
+				},
+				linkChanged(target) {
+					form = target;
+					this.setData({
+						_formDisabled: form.data.disabled
+					});
+				},
+			},
+		},
+		behaviors: [ formField ],
+		properties: {
+			size: {
+				type: String,
+				value: 'normal', // normal small large
+			},
+			type: {
+				type: String,
+				value: '', //beauty selection success primary danger warning secondary info dark disabled  按钮的样式类型
+			},
+			plain: {
+				type: Boolean,
+				value: false, // 按钮是否镂空，背景色透明
+			},
+			hoverClass: {
+				type: String,
+				value: 'btn__hover', // btn__hover none
+			},
+			loading: {
+				type: Boolean,
+				value: false, // 名称前是否带 loading 图标
+			},
+			btnStyle: {
+				type: String,
+				value: '',
+			},
+			hoverStopPropagation: {
+				type: Boolean,
+				value: false,
+			},
+			hoverStartTime: {
+				type: [Number, String],
+				value: 20,
+			},
+			hoverStayTime: {
+				type: [Number, String],
+				value: 70,
+			},
+			excludeOnSubmit: { // 覆盖字段，在表单提交时排除
+				type: Boolean,
+				value: true
+			}
+		},
+		data: {},
+		methods: {
+			
+			/// Private Functions ///
+			
+			_bindSubmit(event) {
+				if (form)
+					form.submit(event);
+			},
+			
+		},
+		
+	};
+</script>
+
+<style lang="pcss">
+</style>

@@ -7,6 +7,24 @@
       "icon": "https://s10.mogucdn.com/mlcdn/c45406/171122_7al50lach13ji6jggj63d17h522dh_200x200.png",
       "pages": [
         {
+          "id": "submit",
+          "name": "表单提交按钮",
+          "icon": "",
+          "code": ""
+        },
+        {
+          "id": "form",
+          "name": "表单",
+          "icon": "",
+          "code": ""
+        },
+        {
+          "id": "field",
+          "name": "表单控件",
+          "icon": "",
+          "code": ""
+        },
+        {
           "id": "button",
           "name": "按钮",
           "icon": "",

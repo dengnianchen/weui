@@ -17,7 +17,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@yapple/wui-abnor": "1.0.3",
-    "@yapple/wui-cc": "1.0.4"
+    "@yapple/wui-abnor": "^1.0.1",
+    "@yapple/wui-cc": "^1.0.1"
   }
 }

@@ -1,0 +1,23 @@
+{
+  "name": "@yapple/wui-submit",
+  "version": "1.0.0",
+  "description": "表单提交按钮 - 小程序组件",
+  "main": "dist/index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dengnianchen/weui/tree/master/packages/wui-submit"
+  },
+  "author": "",
+  "license": "MIT",
+  "minConfig": {
+    "component": true
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@yapple/wui-form": "^1.0.1",
+    "@minui/wxc-button": "^1.0.2"
+  }
+}

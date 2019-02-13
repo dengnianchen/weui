@@ -1,0 +1,18 @@
+<template>
+  <wui-form></wui-form>
+</template>
+
+<script>
+export default {
+  config: {
+    usingComponents: {
+      'wui-form': '@yapple/wui-form'
+    }
+  },
+  data: { },
+  methods: { }
+}
+</script>
+
+<style>
+</style>

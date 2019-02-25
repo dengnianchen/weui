@@ -49,6 +49,7 @@
 			<view wx:if="{{!value}}" class="field__placeholder">{{placeholder}}</view>
 			<view wx:else>{{value}}</view>
 		</picker>
+		<slot wx:else></slot>
 	</view>
 	<view wx:if="{{_error}}" class="field__error">{{_error}}</view>
 </template>

@@ -1,6 +1,6 @@
 {
   "name": "@yapple/wui-panel",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "面板 - 小程序组件",
   "main": "dist/index.js",
   "scripts": {},
@@ -17,7 +17,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@yapple/wui-content": "1.0.9",
+    "@yapple/wui-content": "1.0.10",
     "@yapple/wui-icon": "^1.0.1"
   }
 }

@@ -1,11 +1,11 @@
 <template xmlns:wx="http://www.w3.org/1999/xhtml">
-	<view class="{{_style.stretch?'content__stretch':''}}">
+	<view wx:if="{{loading||error}}" class="{{_style.stretch?'content__stretch':''}}">
 		<wui-cc wx:if="{{loading}}" image="loading"
 		        text="加载中" size="120" color="#999999"></wui-cc>
-		<wui-abnor wx:elif="{{error}}" error="{{error}}"></wui-abnor>
-		<view wx:else class="{{_style.stretch?'content__stretch__main':''}}">
-			<slot></slot>
-		</view>
+		<wui-abnor wx:elif="{{error}}" error="{{error}}" showButton="{{showRetryButton}}" bindabnortap="_reload"></wui-abnor>
+	</view>
+	<view wx:else class="{{_style.stretch?'content__stretch':''}}">
+		<slot></slot>
 	</view>
 </template>
 
@@ -41,6 +41,10 @@
 		},
 		behaviors: [],
 		properties: {
+			showRetryButton: {
+				type: Boolean,
+				value: true
+			},
 			wuiStyle: {
 				type: String,
 				value: "",
@@ -87,6 +91,9 @@
 						error: ex,
 					});
 				}
+			},
+			_reload() {
+				this.load();
 			}
 		},
 	};
@@ -95,17 +102,6 @@
 <style lang="less">
 	
 	.content__stretch {
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	
-	.content__stretch__main {
 		position: absolute;
 		top: 0;
 		right: 0;

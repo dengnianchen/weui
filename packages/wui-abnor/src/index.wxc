@@ -16,6 +16,10 @@
 		'DEFAULT': {
 			image: 'default',
 			button: '点击重试'
+		},
+		'UNKNOWN': {
+			image: null,
+			button: null
 		}
 	}, $.Wui.config.abnor);
 	
@@ -34,7 +38,7 @@
 						if ($.Err[e])
 							e = $.Err[e]();
 						else
-							e = new $.Err(e, e);
+							e = new $.Err('UNKNOWN', e);
 					}
 					this.data.error = e;
 					const configForThisError = $.extend(abnorConfig['DEFAULT'], abnorConfig[e.type]);

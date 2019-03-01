@@ -43,7 +43,7 @@
 		</picker>
 		<picker wx:elif="{{type==='date'}}" class="field__input"
 		        mode="date" value="{{value}}"
-		        start="{{_startDate}}" end="{{_endDate}}"
+		        start="{{startDate}}" end="{{endDate}}"
 		        disabled="{{_formDisabled || disabled}}"
 		        bindchange="_bindDateChange">
 			<view wx:if="{{!value}}" class="field__placeholder">{{placeholder}}</view>
@@ -127,6 +127,12 @@
 				type: Boolean,
 				value: true,
 			},
+			startDate: {
+				type: String
+			},
+			endDate: {
+				type: String
+			}
 			/*
 			name: { // 控件名称（作为表单收集数据时的标识符）
 				type: String,
@@ -164,8 +170,6 @@
 			*/
 		},
 		data: {
-			_startDate: `${new Date().getFullYear() - 30}-01-01`,
-			_endDate: `${new Date().getFullYear() - 15}-12-31`,
 			_range: [],
 			//_formDisabled: false,
 			//_changed: false,
@@ -271,12 +275,12 @@
 			},
 			
 			_confirm() {
-				if (!this.data.validateOnBlur || !this.data._formValidateOnBlur)
-					return;
-				let msg = this.validate();
-				if (msg) {
-					this.setData({ _error: msg });
-					return;
+				if (this.data.validateOnBlur && this.data._formValidateOnBlur) {
+					let msg = this.validate();
+					if (msg) {
+						this.setData({ _error: msg });
+						return;
+					}
 				}
 				this.triggerEvent('confirm', { value: this.value() }, {});
 			},

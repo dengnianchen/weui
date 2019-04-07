@@ -86,6 +86,7 @@
 						error: null
 					});
 				} catch (ex) {
+					console.error(ex);
 					this.setData({
 						loading: false,
 						error: ex,

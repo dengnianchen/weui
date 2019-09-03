@@ -72,6 +72,9 @@
 			_style: defaultStyle
 		},
 		methods: {
+			/**
+			 *
+			 */
 			onRefreshButtonClicked() {
 				if (this.data.contentId)
 					$.Wui.content(this.data.contentId).load();

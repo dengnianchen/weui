@@ -69,17 +69,7 @@
 				type: String,
 				value: "",
 				observer(val) {
-					try {
-						val = val.replace(/([A-Za-z0-9\-]+):/g, function ($0, $1) {
-							return "\"" + $.String.lowerDashToCamel($1) + "\":";
-						});
-						let wuiStyleObject = JSON.parse("{" + val + "}");
-						this.setData({
-							_style: $.extend(defaultStyle, wuiStyleObject)
-						});
-					} catch (ex) {
-						console.log(ex);
-					}
+					this.setData({ _style: $.Wui.applyStyle(val, defaultStyle) });
 				}
 			}
 		},

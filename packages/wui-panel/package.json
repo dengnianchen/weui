@@ -17,6 +17,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@yapple/wui-common": "^1.0.1",
     "@yapple/wui-content": "1.0.11",
     "@yapple/wui-icon": "^1.0.1"
   }

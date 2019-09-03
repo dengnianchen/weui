@@ -1,5 +1,5 @@
 <template xmlns:wx="http://www.w3.org/1999/xhtml">
-	<view class="wui-panel {{_style.bottomMargin?'--bottom-margin':''}}"
+	<view class="wui-panel {{_style.bottomMargin?'-bottom-margin':''}}"
 	      style="background:{{_style.background}};border-color:{{_style.borderColor}}">
 		<view wx:if="{{title}}" class="__title" style="color:{{_style.titleColor}}">
 			<text class="__text">{{title}}</text>
@@ -11,7 +11,7 @@
 		      style="border-color:{{_style.borderColor}}"
 		></view>
 		<wui-content id="{{contentId}}">
-			<view class="__content {{_style.leftPadding?'--left-padding':''}} {{_style.rightPadding?'--right-padding':''}}"
+			<view class="__content {{_style.leftPadding?'-left-padding':''}} {{_style.rightPadding?'-right-padding':''}}"
 			      style="color:{{_style.contentColor}}">
 				<slot></slot>
 			</view>
@@ -54,17 +54,7 @@
 				type: String,
 				value: "",
 				observer(val) {
-					try {
-						val = val.replace(/([A-Za-z0-9\-]+):/g, function ($0, $1) {
-							return "\"" + $.String.lowerDashToCamel($1) + "\":";
-						});
-						let wuiStyleObject = JSON.parse("{" + val + "}");
-						this.setData({
-							_style: $.extend(defaultStyle, wuiStyleObject)
-						});
-					} catch (ex) {
-						console.log(ex);
-					}
+					this.setData({ _style: $.Wui.applyStyle(val, defaultStyle) });
 				}
 			}
 		},
@@ -86,7 +76,7 @@
 </script>
 
 <style lang="less">
-	@px: 100 / 750vmin;
+	@import "../../wui-common/src/style";
 	
 	.wui-panel {
 		border-top: solid 1*@px;
@@ -118,14 +108,14 @@
 		.__content {
 			font-size: 1.14em;
 		}
-		.__content.--left-padding {
+		.__content.-left-padding {
 			padding-left: 30*@px;
 		}
-		.__content.--right-padding {
+		.__content.-right-padding {
 			padding-right: 30*@px;
 		}
 	}
-	.wui-panel.--bottom-margin {
+	.wui-panel.-bottom-margin {
 		margin-bottom: 30*@px;
 	}
 </style>

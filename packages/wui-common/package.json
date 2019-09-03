@@ -1,0 +1,19 @@
+{
+ "name": "@yapple/wui-common",
+ "version": "1.0.0",
+ "description": "公共资源 - 小程序组件",
+ "main": "dist/index.js",
+ "scripts": {},
+ "repository": {
+  "type": "git",
+  "url": "https://github.com/dengnianchen/weui/tree/master/packages/wui-common"
+ },
+ "author": "",
+ "license": "MIT",
+ "minConfig": {
+  "component": true
+ },
+ "publishConfig": {
+  "access": "public"
+ }
+}

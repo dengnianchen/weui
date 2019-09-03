@@ -1,18 +1,21 @@
-<template>
-	<view class="wui-panel {{_style.bottomMargin?'wui-panel--bottom-margin':''}}" style="background:{{_style.background}};border-color:{{_style.borderColor}}">
-		<view wx:if="{{title}}" class="wui-panel__title" style="color:{{_style.titleColor}}">
-			<text class="wui-panel__title__text">{{title}}</text>
-			<button wx:if="{{contentId&&enableRefresh}}" class="wui-panel__title__refresh" bindtap="onRefreshButtonClicked">刷新</button>
+<template xmlns:wx="http://www.w3.org/1999/xhtml">
+	<view class="wui-panel {{_style.bottomMargin?'--bottom-margin':''}}"
+	      style="background:{{_style.background}};border-color:{{_style.borderColor}}">
+		<view wx:if="{{title}}" class="__title" style="color:{{_style.titleColor}}">
+			<text class="__text">{{title}}</text>
+			<button wx:if="{{contentId&&enableRefresh}}" class="__refresh"
+			        bindtap="onRefreshButtonClicked">刷新</button>
 		</view>
-		<view wx:if="{{title}}" class="wui-panel__title--after" style="border-color:{{_style.borderColor}}"></view>
-		<wui-content wx:if="{{contentId}}" id="{{contentId}}">
-			<view class="wui-panel__content {{_style.leftPadding?'wui-panel__content--left-padding':''}} {{_style.rightPadding?'wui-panel__content--right-padding':''}}" style="color:{{_style.contentColor}}">
+		<view wx:if="{{title}}"
+		      class="__after-title"
+		      style="border-color:{{_style.borderColor}}"
+		></view>
+		<wui-content id="{{contentId}}">
+			<view class="__content {{_style.leftPadding?'--left-padding':''}} {{_style.rightPadding?'--right-padding':''}}"
+			      style="color:{{_style.contentColor}}">
 				<slot></slot>
 			</view>
 		</wui-content>
-		<view wx:else class="wui-panel__content {{_style.leftPadding?'wui-panel__content--left-padding':''}} {{_style.rightPadding?'wui-panel__content--right-padding':''}}" style="color:{{_style.contentColor}}">
-			<slot></slot>
-		</view>
 	</view>
 </template>
 
@@ -80,39 +83,46 @@
 </script>
 
 <style lang="less">
+	@px: 100 / 750vmin;
+	
 	.wui-panel {
-		border-top: solid 1px;
-		border-bottom: solid 1px;
+		border-top: solid 1*@px;
+		border-bottom: solid 1*@px;
+		
+		.__title {
+			display: flex;
+			align-items: center;
+			position: relative;
+			font-size: 1em;
+			
+			.__text {
+				flex-grow: 1;
+				padding: 0.8em 30*@px;
+			}
+			
+			.__refresh {
+				font-size: 1em;
+			}
+		}
+		
+		.__after-title {
+			content: " ";
+			margin: 0 0 0 30*@px;
+			height: 1*@px;
+			border-bottom: solid 1*@px;
+		}
+		
+		.__content {
+			font-size: 1.14em;
+		}
+		.__content.--left-padding {
+			padding-left: 30*@px;
+		}
+		.__content.--right-padding {
+			padding-right: 30*@px;
+		}
 	}
-	.wui-panel--bottom-margin {
-		margin-bottom: 30px;
-	}
-	.wui-panel__title {
-		display: flex;
-		align-items: center;
-		position: relative;
-		font-size: 28px;
-	}
-	.wui-panel__title__text {
-		flex-grow: 1;
-		padding: 0.8em 30px;
-	}
-	.wui-panel__title__refresh {
-		font-size: 28px;
-	}
-	.wui-panel__title--after {
-		content: " ";
-		margin: 0 0 0 30px;
-		height: 1px;
-		border-bottom: solid 1px;
-	}
-	.wui-panel__content {
-		font-size: 32px;
-	}
-	.wui-panel__content--left-padding {
-		padding-left: 30px;
-	}
-	.wui-panel__content--right-padding {
-		padding-right: 30px;
+	.wui-panel.--bottom-margin {
+		margin-bottom: 30*@px;
 	}
 </style>

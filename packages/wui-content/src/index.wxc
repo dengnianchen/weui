@@ -1,10 +1,18 @@
 <template xmlns:wx="http://www.w3.org/1999/xhtml">
-	<view wx:if="{{loading||error}}" class="{{_style.stretch?'content__stretch':''}}">
-		<wui-cc wx:if="{{loading}}" image="loading"
-		        text="加载中" size="120" color="#999999"></wui-cc>
-		<wui-abnor wx:elif="{{error}}" error="{{error}}" showButton="{{showRetryButton}}" bindabnortap="_reload"></wui-abnor>
+	<view wx:if="{{loading||error}}" class="{{_style.stretch?'__stretch':''}}">
+		<wui-cc wx:if="{{loading}}"
+		        image="loading"
+		        text="加载中"
+		        size="120"
+		        color="#999999"
+		></wui-cc>
+		<wui-abnor wx:elif="{{error}}"
+		           error="{{error}}"
+		           showButton="{{showRetryButton}}"
+		           bindabnortap="_reload"
+		></wui-abnor>
 	</view>
-	<view wx:else class="{{_style.stretch?'content__stretch':''}}">
+	<view wx:else class="{{_style.stretch?'__stretch':''}}">
 		<slot></slot>
 	</view>
 </template>
@@ -15,7 +23,14 @@
 		stretch: false
 	};
 	
+	// 初始化：注入模块$.Wui.content
 	if (!$.Wui.content) {
+		
+		/**
+		 * 根据指定ID获取Content组件
+		 * @param {String} id
+		 * @return {null|{load(): void, bindLoad(*): void}}
+		 */
 		$.Wui.content = function(id) {
 			let instance = this.content.instances[id];
 			if (!instance)
@@ -29,6 +44,11 @@
 				}
 			};
 		};
+		
+		/**
+		 * 全局Content组件记录
+		 * @type {Object}
+		 */
 		$.Wui.content.instances = {};
 	}
 	
@@ -70,17 +90,20 @@
 		},
 		lifetimes: {
 			attached() {
-				$.Wui.content.instances[this.id] = this;
+				if (this.id)
+					$.Wui.content.instances[this.id] = this;
 			},
 			detached() {
-				delete $.Wui.content.instances[this.id];
+				if (this.id)
+					delete $.Wui.content.instances[this.id];
 			}
 		},
 		methods: {
 			async load() {
 				this.setData({ loading: true });
 				try {
-					await this.loadCallback (this);
+					if (this.loadCallback)
+						await this.loadCallback (this);
 					this.setData({
 						loading: false,
 						error: null
@@ -102,7 +125,7 @@
 
 <style lang="less">
 	
-	.content__stretch {
+	.__stretch {
 		position: absolute;
 		top: 0;
 		right: 0;

@@ -313,16 +313,16 @@
 		display: flex;
 		flex-flow: row nowrap;
 		align-items: center;
-		line-height: 1.4;
-		padding: 24*@px 30*@px;
+		//line-height: 1.4;
+		padding: 0.8em 1em;
 		box-sizing: border-box;
 		font-size: 1em;
 		color: #333;
 		
 		.__label {
-			min-width: 163*@px;
-			height: 46*@px;
-			line-height: 46*@px;
+			min-width: 6em;
+			//height: 46*@px;
+			//line-height: 46*@px;
 			color: #333;
 			font-weight: bold;
 			
@@ -333,23 +333,22 @@
 		
 		.__input {
 			flex: 1;
-			height: 46*@px;
-			min-height: 46*@px;
-			line-height: 46*@px;
+			//height: 46*@px;
+			//min-height: 46*@px;
+			//line-height: 46*@px;
 			font-size: 1.14em;
 		}
 		
 		.__area {
 			flex: 1;
-			height: 138*@px;
-			min-height: 138*@px;
-			line-height: 46*@px;
+			height: 5em;
+			min-height: 5em;
 			font-size: 1.14em;
 		}
 		
 		.__error {
-			padding-left: 163*@px;
-			padding-right: 10*@px;
+			padding-left: 6.4em;
+			padding-right: 0.4em;
 			color: @dangerColor;
 			font-size: 0.8em;
 			text-align: right;
@@ -360,7 +359,7 @@
 		content: '';
 		position: absolute;
 		top: 0;
-		left: 163*@px;
+		left: 6em;
 		right: 0;
 		width: 200%;
 		height: 200%;
